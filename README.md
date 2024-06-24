@@ -1,2 +1,42 @@
-# Dynamic-inquiry_Batch
-QR로 생성된 배치 번호 Tracking을 위한 프로그램
+## Application Details
+|               |
+| ------------- |
+|**Generation Date and Time**<br>Mon Jun 03 2024 12:45:16 GMT+0900 (한국 표준시)|
+|**App Generator**<br>@sap/generator-fiori-freestyle|
+|**App Generator Version**<br>1.12.5|
+|**Generation Platform**<br>Visual Studio Code|
+|**Template Used**<br>simple|
+|**Service Type**<br>SAP System (ABAP On Premise)|
+|**Service URL**<br>http://210.16.199.140:8001/sap/opu/odata/sap/ZEA_QRBATCH_SRV
+|**Module Name**<br>qr_batch|
+|**Application Title**<br>qr을 활용한 배치번호 조회|
+|**Namespace**<br>sync.ea|
+|**UI5 Theme**<br>sap_horizon|
+|**UI5 Version**<br>1.124.0|
+|**Enable Code Assist Libraries**<br>False|
+|**Enable TypeScript**<br>False|
+|**Add Eslint configuration**<br>False|
+
+## qr_batch
+
+An SAP Fiori application.
+
+### Starting the generated app
+
+-   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply run the following from the generated app root folder:
+
+```
+    npm start
+```
+
+- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+
+```
+    npm run start-mock
+```
+
+#### Pre-requisites:
+
+1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
+
+

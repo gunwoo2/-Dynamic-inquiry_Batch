@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: sync.ea.qrbatch
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://210.16.199.140:8001
+          client: "100"
+        app:
+          name: ZEA_QR_BATCH
+          description: qr에 따른 배치번호 조회
+          package: ZEA_UI5
+          transport: KYSK903453
+        exclude:
+          - /test/

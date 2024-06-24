@@ -1,0 +1,85 @@
+<mvc:View controllerName="sync.ea.qrbatch.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:micro="sap.suite.ui.microchart"
+    displayBlock="true"
+    height="100%">
+
+    <Page>
+        <ScrollContainer width="100%" height="100%" vertical="true" horizontal="false">
+            <l:VerticalLayout class="sapUiContentPadding verticalLayoutWithBackground" width="100%" height="100%">
+                <l:content>
+                    <!-- List -->
+                    <List
+                        id="list" 
+                        headerText="조회 상품" class="font-face4 HeaderText rounded-list"
+                        busyIndicatorDelay="0"
+                        items="{path:'/QrBatchSet', length: 1}"
+                        >
+                        <items>
+                            <ObjectListItem title="{Maktx}" icon="sap-icon://add-product" class="font-face3 HeaderText2">
+                                <attributes>
+                                    <ObjectAttribute title="자재 코드" text="{Matnr}" />
+                                    <ObjectAttribute title="배치 번호" text="{Charg}" />
+                                    <ObjectAttribute title="생산 일자" text="{Tsdat}" />
+                                    <ObjectAttribute title="생산 담당(사원번호)" text="{Empcode}" />
+                                    <ObjectAttribute title="생산 수량" text="{= Math.floor(${Calqty}) + ' ' + ${Meins} }" />
+                                </attributes>
+                            </ObjectListItem>
+                        </items>
+                    </List>
+
+                    <!-- Responsive Table -->
+                    <Table id="responsiveTable" inset="false" items="{/QrBatchSet}" growing="true" growingScrollToLoad="true" growingThreshold="10">
+                        <columns>
+                            <Column>
+                                <Text text="재고위치" class="font-face2"/>
+                            </Column>
+                            <Column>
+                                <Text text="보유수량" class="font-face2"/>
+                            </Column>
+                            <Column>
+                                <Text text="생산기간" class="font-face2"/>
+                            </Column>
+                            <Column>
+                                <Text text="재고" class="font-face2"/>
+                            </Column>
+                            <Column>
+                                <Text text="재고비율" class="font-face2"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{Pname1}" class="font-face2"/>
+                                    <ObjectNumber number="{
+                                        path: 'Remqty',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        formatOptions: {
+                                            groupingEnabled: true,
+                                            groupingSeparator: ',',
+                                            decimalSeparator: '.'
+                                        }
+                                    }" unit="{Meins}" class="font-face2"/>
+                                    <ObjectStatus text="{path: 'Tsdat', formatter: '._getDateDifference'}일 경과"
+                                                  state="{path: 'Tsdat', formatter: '._getStatusState'}" 
+                                                  class="font-face2"/>
+                                    <ObjectStatus text="{= ${Remqty} > '10' ? 'In stock' : 'Out of stock' }"
+                                                  icon="{= ${Remqty} > '10' ? 'sap-icon://sys-enter-2' : 'sap-icon://error' }"
+                                                  state="{= ${Remqty} > '10' ? 'Success' : 'Error' }" 
+                                                  class="font-face"/>
+                                    <FlexBox height="70px" width="70px" renderType="Bare" alignItems="Center" justifyContent="Center">
+                                        <Text text="{TotalQty}" class="percentageText"/>
+                                        <micro:RadialMicroChart size="Responsive" percentage="{= ${Remqty} / ${view>/TotalQty} * 100}" press="press" color="Critical" class="percentageText "/>
+                                    </FlexBox>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </l:content>
+            </l:VerticalLayout>
+        </ScrollContainer>
+    </Page>
+</mvc:View>
