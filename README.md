@@ -1,4 +1,4 @@
-# Dynamic-inquiry_Batch
+# Dynamic-inquiry_Batch [![Youtube](https://img.shields.io/badge/Youtube-ff0000?style=flat&logo=youtube)](https://youtu.be/kTrVcEZgdOM?si=_cRmEfF53j4y4sk9)
 QR로 생성된 배치 번호 Tracking을 위한 프로그램
 
 
